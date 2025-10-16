@@ -2965,7 +2965,7 @@ textarea {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  padding: 95px 80px 100px;
+  padding: 50px 80px 50px;
   width: 100%;
 }
 @media (max-width: 1500px) {
@@ -3041,7 +3041,7 @@ textarea {
 .slider__content .title {
   margin-bottom: 48px;
   color: var(--tg-color-white-default);
-  font-size: 60px;
+  font-size: 45px;
   text-transform: uppercase;
   line-height: 1.15;
 }
@@ -3348,6 +3348,134 @@ textarea {
   animation-fill-mode: both;
   -webkit-animation-name: fadeRight2;
   animation-name: fadeRight2;
+}
+/* =============================== */
+/* SLIDER - CRISTAL SUR (centrado) */
+/* =============================== */
+
+/* --- Slide base --- */
+.slider__bg,
+.slider__bg.swiper-slide {
+  position: relative;
+  display: block;
+  min-height: 80vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* --- Contenedor del contenido (centrado absoluto) --- */
+.slider__bg .slider__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: min(90vw, 820px);
+  z-index: 2;
+  color: #fff;
+
+  /* Fondo para contraste sobre la imagen */
+  background: rgba(0, 0, 0, 0.45);
+  padding: 40px 60px;
+  border-radius: 12px;
+}
+
+/* --- Ajustes para evitar desplazamientos por el grid --- */
+.slider__bg .custom-container-two,
+.slider__bg .container,
+.slider__bg .row,
+.slider__bg [class*="col-"] {
+  height: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+}
+
+/* --- Subtítulo --- */
+.slider__content .sub-title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fcb37d;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* --- Título --- */
+.slider__content .title {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+
+/* --- Botón principal --- */
+.slider__content .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #e27752;
+  color: #fff !important;
+  font-weight: 700;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+.slider__content .btn:hover {
+  background: #ff8f63;
+}
+
+/* --- Ajustes Swiper (por si usás flechas o dots) --- */
+.slider-active {
+  overflow: hidden;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 1199.98px) {
+  .slider__content .title {
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 991.98px) {
+  .slider__bg .slider__content {
+    padding: 30px 40px;
+  }
+  .slider__content .title {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 767.98px) {
+  .slider__bg .slider__content {
+    padding: 25px 30px;
+  }
+  .slider__content .title {
+    font-size: 1.8rem;
+  }
+  .slider__content .btn {
+    padding: 12px 22px;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .slider__bg {
+    min-height: 90vh;
+  }
+  .slider__bg .slider__content {
+    width: 92vw;
+    padding: 22px 20px;
+  }
+  .slider__content .title {
+    font-size: 1.5rem;
+  }
+  .slider__content .sub-title {
+    font-size: 0.9rem;
+  }
 }
 
 /*=============================
