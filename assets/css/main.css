@@ -6145,15 +6145,11 @@ textarea {
 }
 @media (max-width: 767.98px) {
   .cta__content .title {
-    font-size: 45px;
+    font-size: 25px;
     margin-bottom: 30px;
   }
 }
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .cta__content .title {
-    font-size: 50px;
-  }
-}
+
 @media (max-width: 991.98px) {
   .cta__content .title br {
     display: none;
@@ -6177,6 +6173,7 @@ textarea {
   .cta__content-right {
     text-align: center;
   }
+  
 }
 .cta__content-right .title {
   margin-bottom: 0;
@@ -6206,6 +6203,9 @@ textarea {
 @media (max-width: 767.98px) {
   .cta__content-two .title {
     font-size: 36px;
+  }
+  .cta__content-right {
+    padding: 15px 15px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
