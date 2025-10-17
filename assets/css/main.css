@@ -6254,6 +6254,32 @@ textarea {
   .cta__shape img {
     max-width: 220px;
   }
+/* BASE (desktop con parallax clásico) */
+.cta__bg{
+  position:absolute; inset:0;
+  background-position:center;
+  background-size:cover;
+  background-attachment:fixed; /* parallax en desktop */
+  z-index:-1;
+  will-change: background-position;
+}
+
+/* Filtro amplio para móviles / touch (incluye Safari iOS) */
+@media (hover:none) and (pointer:coarse){
+  .cta__bg{
+    background-attachment:scroll; /* se desactiva el parallax */
+    background-position:center center;
+  }
+}
+
+/* Extra “por las dudas” para iOS WebKit */
+@supports (-webkit-touch-callout: none){
+  .cta__bg{
+    background-attachment:scroll;
+  }
+}
+
+  
 }
 
 /*=============================
@@ -8394,7 +8420,7 @@ textarea {
 }
 @media (max-width: 767.98px) {
   .work__content .title {
-    font-size: 46px;
+    font-size: 25px;
     margin-bottom: 20px;
   }
 }
@@ -12460,6 +12486,7 @@ textarea {
 @media (max-width: 991.98px) {
   .footer__top .row [class*=col-]:nth-child(2) .footer__widget {
     margin-left: 0;
+    text-align: center;
   }
 }
 .footer__top .row [class*=col-]:nth-child(3) .footer__widget {
@@ -12602,6 +12629,7 @@ textarea {
 @media (max-width: 991.98px) {
   .footer__social-two .list-wrap {
     justify-content: center;
+    text-align: center;
   }
 }
 .footer__social-two .list-wrap li a {

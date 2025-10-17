@@ -619,6 +619,53 @@
             </div>
 
         </section>
+        <script>
+  // Carga de imagen desde data-background (si tu tema no lo hace)
+  document.querySelectorAll('.cta__bg[data-background]').forEach(el=>{
+    const img = el.getAttribute('data-background');
+    if(img) el.style.backgroundImage = `url("${img}")`;
+    // velocidad opcional por elemento (0.2 a 0.6 suelen verse bien)
+    if(!el.dataset.speed) el.dataset.speed = '0.35';
+  });
+
+  // Parallax compatible con iOS (mueve background-position Y)
+  (function(){
+    const els = Array.from(document.querySelectorAll('.cta__bg'));
+    if(!els.length) return;
+
+    let ticking = false;
+
+    function update(){
+      els.forEach(el=>{
+        // tomamos el contenedor de la sección para calcular el scroll relativo
+        const section = el.closest('section') || el.parentElement;
+        const rect = section.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const speed = parseFloat(el.dataset.speed) || 0.35;
+
+        // “desfase” del fondo: cuanto más entra a viewport, más se desplaza
+        // Ajustá el factor si querés más/menos efecto
+        const progress = (rect.top - vh) * speed;
+
+        el.style.backgroundPosition = `center calc(50% + ${progress}px)`;
+      });
+      ticking = false;
+    }
+
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll, {passive:true});
+    // primer paint
+    update();
+  })();
+</script>
+
         <!-- cta-area-end -->
 
         <!-- team-area -->
