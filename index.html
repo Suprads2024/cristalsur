@@ -619,16 +619,15 @@
             </div>
 
         </section>
-        <script>
-  // Carga de imagen desde data-background (si tu tema no lo hace)
+     <script>
+  // 1) Aplica la imagen desde data-background y una velocidad por defecto
   document.querySelectorAll('.cta__bg[data-background]').forEach(el=>{
     const img = el.getAttribute('data-background');
     if(img) el.style.backgroundImage = `url("${img}")`;
-    // velocidad opcional por elemento (0.2 a 0.6 suelen verse bien)
-    if(!el.dataset.speed) el.dataset.speed = '0.35';
+    if(!el.dataset.speed) el.dataset.speed = '0.35'; // 0.25–0.5 recomendado
   });
 
-  // Parallax compatible con iOS (mueve background-position Y)
+  // 2) Parallax moviendo background-position-Y (iOS-friendly)
   (function(){
     const els = Array.from(document.querySelectorAll('.cta__bg'));
     if(!els.length) return;
@@ -636,26 +635,40 @@
     let ticking = false;
 
     function update(){
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+
       els.forEach(el=>{
-        // tomamos el contenedor de la sección para calcular el scroll relativo
         const section = el.closest('section') || el.parentElement;
         const rect = section.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
         const speed = parseFloat(el.dataset.speed) || 0.35;
 
-        // “desfase” del fondo: cuanto más entra a viewport, más se desplaza
-        // Ajustá el factor si querés más/menos efecto
-        const progress = (rect.top - vh) * speed;
+        // centro de la sección vs centro del viewport => movimiento suave
+        const sectionCenter = rect.top + rect.height/2;
+        const viewportCenter = vh/2;
 
-        el.style.backgroundPosition = `center calc(50% + ${progress}px)`;
+        // desplazamiento “crudo”
+        const raw = (viewportCenter - sectionCenter) * speed;
+
+        // límite para que nunca asome el borde del fondo
+        const maxShift = Math.max(120, rect.height * 0.20); // ajustable
+
+        // clamp
+        const shift = Math.max(-maxShift, Math.min(maxShift, raw));
+
+        // aplica posición
+        el.style.backgroundPosition = `center calc(50% + ${shift}px)`;
+
+        // si querés, podés estirar dinámicamente la imagen:
+        // el.style.backgroundSize = `auto calc(100% + ${maxShift*2}px)`;
       });
+
       ticking = false;
     }
 
     function onScroll(){
       if(!ticking){
-        requestAnimationFrame(update);
         ticking = true;
+        requestAnimationFrame(update);
       }
     }
 
@@ -665,6 +678,7 @@
     update();
   })();
 </script>
+
 
         <!-- cta-area-end -->
 
@@ -686,8 +700,8 @@
 
                             </div>
                             <div class="team__content">
-                                <h2 class="title"><a href="team-details.html">Samuel Alexander</a></h2>
-                                <span>Head of Construction</span>
+                                <h2 class="title"><a href="team-details.html">Lorem, ipsum.</a></h2>
+                                <span>Lorem, ipsum dolor.</span>
                             </div>
                         </div>
                     </div>
@@ -698,8 +712,8 @@
 
                             </div>
                             <div class="team__content">
-                                <h2 class="title"><a href="team-details.html">Edward Steven</a></h2>
-                                <span>Head of Construction</span>
+                                <h2 class="title"><a href="team-details.html">Lorem, ipsum.</a></h2>
+                                <span>Lorem, ipsum dolor.</span>
                             </div>
                         </div>
                     </div>
@@ -710,8 +724,8 @@
 
                             </div>
                             <div class="team__content">
-                                <h2 class="title"><a href="team-details.html">Samuel Robert</a></h2>
-                                <span>Head of Construction</span>
+                                <h2 class="title"><a href="team-details.html">Lorem, ipsum.</a></h2>
+                                <span>Lorem, ipsum dolor.</span>
                             </div>
                         </div>
                     </div>
