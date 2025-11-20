@@ -1,0 +1,137 @@
+/* VENTANA GUILLOTINA – VENTANAS */
+.cs-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.cs-win-vert-scene {
+  position: relative;
+  perspective: 900px;
+  text-align: center;
+}
+
+/* marco exterior de la ventana */
+.cs-win-vert-frame {
+  width: 220px;
+  height: 260px;
+  border-radius: 16px;
+  padding: 10px;
+  background: #e3e5ea;
+  box-shadow: 0 22px 60px rgba(0,0,0,.25);
+  margin-inline: auto;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* borde interno del marco */
+.cs-win-vert-frame::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.9);
+  box-shadow: inset 0 0 16px rgba(0,0,0,.18);
+  pointer-events: none;
+}
+
+/* cristal azul de fondo (parte fija de la ventana) */
+.cs-win-vert-backglass {
+  position: absolute;
+  inset: 18px;
+  border-radius: 9px;
+
+  box-shadow:
+    inset 0 0 26px rgba(255,255,255,.7),
+    inset 0 0 30px rgba(0,0,0,.18);
+  z-index: 1;
+}
+
+.cs-win-vert-logo {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 28px;        /* ⬅ BAJO DEL TODO */
+  top: auto;           /* ⬅ DESACTIVA "top" si existía */
+  height: 50px;        /* ⬅ CONTROLAMOS LA ALTURA DEL LOGO */
+  background-image: url("../img/cristalsur/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  transform: translateY(10px) scale(0.9);
+  transition: opacity .45s ease .1s, transform .45s ease .1s;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* hoja movil que sube */
+.cs-win-vert-sash {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  height: 60%; /* ocupa parte inferior al estar cerrada */
+  border-radius: 7px;
+  background: #dde0e6;
+  box-shadow:
+    0 0 0 2px #c6cad1,
+    0 12px 22px rgba(0,0,0,.22);
+  transform-origin: center bottom;
+  transform: translateY(0) translateZ(10px);
+  transition: transform .6s cubic-bezier(.25,.9,.25,1), box-shadow .6s ease;
+  z-index: 3;
+}
+
+/* vidrio de la hoja */
+.cs-win-vert-sash-glass {
+  position: absolute;
+  inset: 5px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #d9ecff, #b4d6ff);
+  box-shadow:
+    inset 0 0 18px rgba(255,255,255,.8),
+    inset 0 0 30px rgba(0,0,0,.18);
+}
+
+/* rail horizontal central */
+.cs-win-vert-rail {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 6px;
+  height: 2px;
+  background: rgba(255,255,255,.8);
+}
+
+/* manija */
+.cs-win-vert-handle {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  width: 26px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, #cfd1d5);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.16);
+}
+
+/* HOVER: la hoja sube y aparece el logo */
+.cs-win-vert-scene:hover .cs-win-vert-sash {
+  transform: translateY(-45%) translateZ(10px);
+  box-shadow:
+    0 20px 30px rgba(0,0,0,.4);
+}
+
+.cs-win-vert-scene:hover .cs-win-vert-logo {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* texto debajo */
+.cs-win-vert-caption {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--tg-body-color);
+  opacity: 0.8;
+}

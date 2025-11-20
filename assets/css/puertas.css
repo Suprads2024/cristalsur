@@ -1,0 +1,599 @@
+
+/* MAIN PUERTAS */
+.cs-main-puertas {
+  font-family: var(--tg-body-font-family);
+  color: var(--tg-body-color);
+}
+
+/* Secciones básicas */
+.cs-section {
+  padding: 60px 0;
+}
+
+.cs-container {
+  width: min(1160px, 92vw);
+  margin: 0 auto;
+}
+
+/* TITULOS */
+.cs-kicker {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: var(--tg-fw-semi-bold);
+  color: var(--tg-theme-primary);
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.cs-title-xl {
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: var(--tg-fw-extra-bold);
+  color: var(--tg-heading-color);
+  margin-bottom: 14px;
+}
+
+.cs-title-lg {
+  font-size: 30px;
+  font-weight: var(--tg-fw-bold);
+  color: var(--tg-heading-color);
+  margin-bottom: 12px;
+}
+
+.cs-title-md {
+  font-size: 22px;
+  font-weight: var(--tg-fw-semi-bold);
+  color: var(--tg-heading-color);
+  margin-bottom: 10px;
+}
+
+.cs-lead {
+  font-size: 18px;
+  color: var(--tg-color-dark);
+  margin-bottom: 14px;
+}
+
+/* HERO GRID */
+.cs-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+}
+
+.cs-hero-copy {
+  max-width: 540px;
+}
+
+.cs-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 20px;
+}
+
+.cs-hero-tags span {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--tg-border-2);
+  background: var(--tg-color-gray-3);
+}
+
+/* BOTONES */
+.cs-btn-primary,
+.cs-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: var(--tg-fw-semi-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.cs-btn-primary {
+  background: var(--tg-theme-primary);
+  color: var(--tg-color-white-default);
+  border: 1px solid transparent;
+}
+
+.cs-btn-primary:hover {
+  background: #e25700;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+}
+
+.cs-btn-outline {
+  border: 1px solid var(--tg-theme-primary);
+  color: var(--tg-theme-primary);
+  background: transparent;
+}
+
+.cs-btn-outline:hover {
+  background: var(--tg-theme-primary);
+  color: var(--tg-color-white-default);
+}
+
+/* HERO VISUAL – PUERTA INTERACTIVA CON LOGO */
+.cs-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.cs-door-scene {
+  position: relative;
+  perspective: 1000px;
+  text-align: center;
+}
+
+/* sombra piso */
+.cs-door-floor {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -32px;
+  width: 260px;
+  height: 40px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.25), transparent 70%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* marco */
+.cs-door-frame {
+  width: 230px;
+  height: 360px;
+  border-radius: 18px;
+  padding: 12px;
+  background: radial-gradient(circle at 20% 0%, #ffffff, #dedede 52%, #b6b6b6 100%);
+  box-shadow: 0 26px 60px rgba(0,0,0,.25);
+  margin-inline: auto;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cs-door-frame::before {
+  content: "";
+  position: absolute;
+  inset: 14px 8px;
+  border-radius: 11px;
+  border: 1px solid rgba(0,0,0,.16);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* LOGO QUE APARECE DETRÁS */
+.cs-door-logo {
+  position: absolute;
+  inset: 22px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;              /* detrás de la hoja */
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+  transition:
+    opacity 0.55s ease 0.1s,
+    transform 0.55s ease 0.1s;
+}
+
+.cs-door-logo img {
+  max-width: 80%;
+  height: auto;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,.35));
+}
+
+/* glow interior */
+.cs-door-inner-glow {
+  position: absolute;
+  inset: 16px 12px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 30% 0%, rgba(246,99,0,.70), transparent 70%);
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.6s ease;
+}
+
+/* hoja de la puerta */
+.cs-door-leaf {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: linear-gradient(120deg, #9b5a27, #c6712d, #8a4b1f);
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,.18),
+    0 10px 25px rgba(0,0,0,.35);
+  transform-origin: left center;
+  transform: rotateY(-6deg); /* leve perspectiva cerrada */
+  transition:
+    transform 0.6s cubic-bezier(.25,.9,.25,1),
+    box-shadow 0.6s ease;
+  z-index: 3;
+}
+
+/* HOVER: se abre la puerta y aparece el logo */
+.cs-door-scene:hover .cs-door-leaf {
+  transform: rotateY(-75deg) translateX(6px);
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,.18),
+    0 26px 60px rgba(0,0,0,.6);
+}
+
+.cs-door-scene:hover .cs-door-inner-glow {
+  opacity: 1;
+}
+
+.cs-door-scene:hover .cs-door-floor {
+  background: radial-gradient(ellipse at center, rgba(246,99,0,.6), transparent 70%);
+}
+
+.cs-door-scene:hover .cs-door-logo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* detalles hoja */
+.cs-door-handle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 4px;
+  height: 52px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, #c4c4c4);
+  box-shadow: 0 0 0 2px rgba(0,0,0,.12);
+}
+
+.cs-door-line {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  height: 2px;
+  background: rgba(255,255,255,.6);
+}
+
+.cs-door-line-1 { top: 26%; }
+.cs-door-line-2 { top: 50%; }
+.cs-door-line-3 { top: 74%; }
+
+.cs-door-caption {
+  font-size: 12px;
+  margin-top: 10px;
+  color: var(--tg-body-color);
+  opacity: 0.8;
+}
+
+/* BENEFICIOS */
+.cs-section-header {
+  margin-bottom: 26px;
+}
+
+.cs-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.cs-card {
+  background: var(--tg-color-gray-3);
+  border-radius: 14px;
+  padding: 20px 18px;
+  border: 1px solid var(--tg-border-2);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.cs-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  border-color: var(--tg-theme-primary);
+}
+
+.cs-card h3 {
+  font-size: 18px;
+  font-weight: var(--tg-fw-semi-bold);
+  color: var(--tg-theme-secondary);
+  margin-bottom: 8px;
+}
+
+.cs-card p {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Iconos geométricos */
+.cs-card-icon-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: var(--tg-color-white-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-icon-line,
+.cs-icon-wave,
+.cs-icon-grid {
+  display: block;
+}
+
+.cs-icon-line {
+  width: 18px;
+  height: 2px;
+  background: var(--tg-theme-primary);
+  box-shadow: 0 4px 0 0 rgba(0,0,0,.08);
+}
+
+.cs-icon-wave {
+  width: 18px;
+  height: 12px;
+  border-radius: 999px;
+  border: 2px solid var(--tg-theme-primary);
+}
+
+.cs-icon-grid {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 2px solid var(--tg-theme-primary);
+  box-shadow: inset 0 -4px 0 0 var(--tg-theme-primary);
+}
+
+/* MODELOS / TIPOS DE PUERTAS */
+.cs-grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.cs-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+}
+
+.cs-list li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.cs-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tg-theme-primary);
+}
+
+.cs-highlight-box {
+  background: var(--tg-color-yellow-light-2);
+  border-left: 3px solid var(--tg-theme-primary);
+  border-radius: 12px;
+  padding: 18px 18px 20px 22px;
+}
+
+.cs-highlight-box h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: var(--tg-theme-secondary);
+}
+
+.cs-highlight-box p {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.cs-link-ghost {
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: var(--tg-fw-medium);
+  color: var(--tg-theme-secondary);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.cs-link-ghost::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--tg-theme-primary);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.18s ease;
+}
+
+.cs-link-ghost:hover::after {
+  transform: scaleX(1);
+}
+
+/* CTA FINAL */
+.cs-cta-puertas {
+  background: var(--tg-color-gray-2);
+  border-top: 1px solid var(--tg-border-2);
+  border-bottom: 1px solid var(--tg-border-2);
+}
+
+.cs-cta-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .cs-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-hero-visual {
+    order: -1;
+  }
+
+  .cs-grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cs-grid-2,
+  .cs-cta-inner {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .cs-title-xl {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-section {
+    padding: 44px 0;
+  }
+
+  .cs-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-door-frame {
+    width: 200px;
+    height: 320px;
+  }
+
+  .cs-title-lg {
+    font-size: 24px;
+  }
+
+  .cs-title-md {
+    font-size: 20px;
+  }
+}
+/* Estado base */
+.cs-door-leaf {
+  transform-origin: left center;
+  transform: rotateY(-6deg);
+  transition: transform 0.6s cubic-bezier(.25,.9,.25,1), box-shadow 0.6s ease;
+}
+
+.cs-door-inner-glow {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* HOVER → puerta abierta */
+.cs-door-scene:hover .cs-door-leaf {
+  transform: rotateY(-75deg) translateX(6px);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.18),
+              0 26px 60px rgba(0,0,0,.6);
+}
+
+.cs-door-scene:hover .cs-door-inner-glow {
+  opacity: 1;
+}
+
+.cs-door-scene:hover .cs-door-floor {
+  background: radial-gradient(ellipse at center, rgba(246,99,0,.6), transparent 70%);
+}
+/* HERO VISUAL – PUERTA INTERACTIVA CON LOGO */
+.cs-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.cs-door-scene {
+  position: relative;
+  perspective: 1000px;
+  text-align: center;
+}
+
+/* sombra del piso */
+.cs-door-floor {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -32px;
+  width: 260px;
+  height: 40px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.25), transparent 70%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* marco */
+.cs-door-frame {
+  width: 230px;
+  height: 360px;
+  border-radius: 18px;
+  padding: 12px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 26px 60px rgba(0,0,0,.25);
+  margin-inline: auto;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cs-door-frame::before {
+  content: "";
+  position: absolute;
+  inset: 14px 8px;
+  border-radius: 11px;
+  border: 1px solid rgba(0,0,0,.12);
+  pointer-events: none;
+}
+
+/* LOGO DETRÁS */
+.cs-door-logo {
+  position: absolute;
+  inset: 20px 16px;
+  z-index: 1;
+  background-image: url("../img/cristalsur/logo.png"); /* ← ajustá la ruta si hace falta */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 75%;
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+  transition: opacity .45s ease .1s, transform .45s ease .1s;
+}
+
+
+
+/* AL HACER HOVER: ABRIR PUERTA + MOSTRAR LOGO */
+.cs-door-scene:hover .cs-door-leaf {
+  transform: rotateY(-110deg) translateX(6px);
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,.18),
+    0 26px 60px rgba(0,0,0,.6);
+}
+
+.cs-door-scene:hover .cs-door-logo {
+  opacity: 1;
+  transform: scale(1);
+}
+
