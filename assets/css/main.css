@@ -2419,6 +2419,39 @@ textarea {
   z-index: 1;
   letter-spacing: 1.2px;
 }
+/* Estilos del span para que copie los del <a> */
+.tgmenu__navbar-wrap ul li .no-link {
+    font-size: 16px;
+    font-weight: var(--tg-fw-semi-bold);
+    text-transform: uppercase;
+    color: var(--tg-heading-color);
+    font-family: var(--tg-heading-font-family);
+    padding: 42px 24px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1.2px;
+    cursor: default;
+}
+
+/* 👉 Flecha del dropdown aplicada también al span */
+.tgmenu__navbar-wrap ul li.menu-item-has-children .no-link::after {
+    content: "\f107"; /* icono flecha (FontAwesome) */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 14px;
+    margin-left: 6px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+/* Rotación cuando el menú está activo (si tu template lo usa) */
+.tgmenu__navbar-wrap ul li.menu-item-has-children:hover .no-link::after {
+    transform: rotate(180deg);
+}
+
 @media (max-width: 1500px) {
   .tgmenu__navbar-wrap ul li a {
     padding: 42px 18px;
