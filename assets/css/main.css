@@ -1436,20 +1436,24 @@ textarea {
 .tgmobile__menu .navigation li.menu-item-has-children .dropdown-btn.open .plus-line::after {
   display: none;
 }
-.tgmobile__menu .navigation li > a {
-  position: relative;
-  display: block;
-  padding: 10px 60px 10px 25px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--tg-heading-color);
-  text-transform: uppercase;
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  transition: all 500ms ease;
-  border: none;
-  letter-spacing: 1px;
+/* Aplica los mismos estilos al enlace y al span.no-link */
+.tgmobile__menu .navigation li > a,
+.tgmobile__menu .navigation li > .no-link {
+    position: relative;
+    display: block;
+    padding: 10px 60px 10px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--tg-heading-color);
+    text-transform: uppercase;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+    border: none;
+    letter-spacing: 1px;
+    cursor: pointer; /* opcional, para que se vea cliqueable */
 }
+
 .tgmobile__menu .navigation li > a::before {
   content: "";
   position: absolute;
@@ -3158,7 +3162,7 @@ textarea {
   }
 }
 .slider__content-two .title {
-  margin-bottom: 70px;
+  margin-bottom: 10px;
   color: var(--tg-color-white-default);
   text-transform: uppercase;
   font-size: 70px;
@@ -3166,26 +3170,26 @@ textarea {
 }
 @media (max-width: 1500px) {
   .slider__content-two .title {
-    font-size: 75px;
-    margin-bottom: 50px;
+    font-size: 55px;
+    margin-bottom: 10px;
   }
 }
 @media (max-width: 1199.98px) {
   .slider__content-two .title {
-    font-size: 65px;
-    margin-bottom: 40px;
+    font-size: 50px;
+  
   }
 }
 @media (max-width: 991.98px) {
   .slider__content-two .title {
-    font-size: 60px;
-    margin-bottom: 35px;
+    font-size: 38px;
+   
   }
 }
 @media (max-width: 767.98px) {
   .slider__content-two .title {
-    font-size: 48px;
-    margin-bottom: 30px;
+    font-size: 35px;
+   
   }
 }
 .slider__content-three {
@@ -3531,6 +3535,82 @@ textarea {
   .slider__content .sub-title {
     font-size: 0.9rem;
   }
+}
+
+/* texto descriptivo debajo del h1 */
+.slider-description {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #f5f5f5; /* ajustá al esquema de tu sitio */
+}
+
+/* lista de features con check */
+.slider-features {
+    list-style: none;
+    margin: 15px 0 20px;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #f5f5f5;
+}
+
+.slider-features li + li {
+    margin-top: 5px;
+}
+
+/* rating de estrellas */
+.slider-rating {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffffff;
+    
+    font-weight: 500;
+}
+
+/* contenedor de dos botones */
+.slider__btn-double {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* segundo botón (WhatsApp) estilo bordeado */
+.btn-outline-two {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    background: transparent;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-two:hover {
+    background: #ffffff;
+    color: #111111;
+}
+/* Mobile: mantener también centrado */
+@media (max-width: 768px) {
+    .slider__btn-double {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* antes era flex-start */
+        width: 100%;
+    }
+
+    .slider__btn-double a {
+        width: 100%;      /* opcional: si querés que ocupen todo el ancho */
+        max-width: 350px; /* recomendado para no hacerlo demasiado grande */
+        text-align: center;
+    }
 }
 
 /*=============================
