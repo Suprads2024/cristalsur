@@ -3612,14 +3612,7 @@ textarea {
         text-align: center;
     }
 
-      .btn.btn-two {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-        width: 100%;        /* opcional: hace el botón más prolijo */
-        max-width: 350px;   /* evita que se haga enorme */
-    }
+   
 
     .btn-outline-two{
       display: none;

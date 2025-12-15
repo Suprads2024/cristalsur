@@ -467,7 +467,7 @@
   }
 
   .cs-title-xl {
-    font-size: 32px;
+    font-size: 25px;
   }
 }
 
@@ -601,22 +601,12 @@
     display: none;
 }
 
-/* Desktop: botón original funciona normal */
-@media (min-width: 769px) {
-    .banner-btn {
-        display: inline-block;
-        margin-left: 20px;
-        position: relative;
-        top: -5px;
-    }
-}
+
 
 /* Mobile: ocultamos el botón original y mostramos el de abajo */
 @media (max-width: 768px) {
 
-    .banner-btn {
-        display: none !important;
-    }
+  
 
     .banner-btn-mobile {
         display: inline-block;
@@ -634,4 +624,8 @@
     .title-two {
         margin-top: -5px;
     }
+      .banner-btn {
+        display: none !important;
+    }
+    
 }
