@@ -6771,7 +6771,8 @@ textarea {
 }
 .team__content span {
   display: block;
-  line-height: 1;
+  line-height: 1,2;
+  font-weight: 500;
 }
 .team__content-two .title {
   margin-bottom: 10px;
