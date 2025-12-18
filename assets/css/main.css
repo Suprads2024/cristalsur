@@ -3157,7 +3157,7 @@ textarea {
 }
 @media (max-width: 767.98px) {
   .slider__content-two .sub-title {
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 12px;
   }
 }
@@ -3602,27 +3602,29 @@ textarea {
     background: #ffffff;
     color: #111111;
 }
-/* Mobile: mantener también centrado */
 @media (max-width: 768px) {
     .slider__btn-double {
         flex-direction: column;
         justify-content: center;
-        align-items: center; /* antes era flex-start */
+        align-items: center;
         width: 100%;
     }
 
     .slider__btn-double a {
-        width: 100%;      /* opcional: si querés que ocupen todo el ancho */
-        max-width: 350px; /* recomendado para no hacerlo demasiado grande */
+        width: 100%;
+        max-width: 350px;
+        display: flex;                 /* CLAVE */
+        justify-content: center;       /* CLAVE */
+        align-items: center;           /* CLAVE */
         text-align: center;
+        gap: 10px;                     /* separa texto del ícono */
     }
 
-   
-
-    .btn-outline-two{
-      display: none;
+    .btn-outline-two {
+        display: none;
     }
 }
+
 
 /*=============================
         04. Banner
