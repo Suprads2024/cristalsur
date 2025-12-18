@@ -3645,7 +3645,7 @@ textarea {
   background-size: cover;
   background-position: center;
   position: relative;
-  min-height: 800px;
+  min-height: 600px;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
