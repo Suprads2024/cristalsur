@@ -135,3 +135,54 @@
   color: var(--tg-body-color);
   opacity: 0.8;
 }
+/* =========================
+   VENTANA – TOGGLE MOBILE
+   ========================= */
+.cs-win-check {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs-win-hit {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Desktop: hover original */
+@media (hover: hover) and (pointer: fine) {
+  .cs-win-vert-scene:hover .cs-win-vert-sash {
+    transform: translateY(-65%);
+  }
+
+  .cs-win-vert-scene:hover .cs-win-vert-logo {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile: toggle por tap */
+@media (hover: none) and (pointer: coarse) {
+
+  /* anulamos hover */
+  .cs-win-vert-scene:hover .cs-win-vert-sash {
+    transform: translateY(0);
+  }
+
+  .cs-win-vert-scene:hover .cs-win-vert-logo {
+    opacity: 0;
+    transform: translateY(10px) scale(.9);
+  }
+
+  /* abierto */
+  .cs-win-check:checked + .cs-win-hit .cs-win-vert-sash {
+    transform: translateY(-65%);
+  }
+
+  .cs-win-check:checked + .cs-win-hit .cs-win-vert-logo {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

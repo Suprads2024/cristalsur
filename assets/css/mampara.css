@@ -103,3 +103,41 @@
   font-size: 12px;
   opacity: 0.8;
 }
+/* =========================
+   MAMPARA – TOGGLE MOBILE
+   ========================= */
+.cs-mp-check {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs-mp-hit {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* En desktop seguís con hover (como ahora) */
+@media (hover: hover) and (pointer: fine) {
+  .cs-mp-scene:hover .cs-mp-panel { transform: translateX(115%); }
+  .cs-mp-scene:hover .cs-mp-logo { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* En mobile: desactivamos hover y usamos checkbox toggle */
+@media (hover: none) and (pointer: coarse) {
+  .cs-mp-scene:hover .cs-mp-panel { transform: translateX(0); }
+  .cs-mp-scene:hover .cs-mp-logo { opacity: 0; transform: translateX(-10px) scale(.9); }
+
+  /* Abierto cuando el checkbox está tildado */
+  .cs-mp-check:checked + .cs-mp-hit .cs-mp-panel {
+    transform: translateX(115%);
+    box-shadow: 0 20px 38px rgba(0,0,0,.35);
+  }
+
+  .cs-mp-check:checked + .cs-mp-hit .cs-mp-logo {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}

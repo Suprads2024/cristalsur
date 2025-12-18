@@ -298,29 +298,40 @@
 " class="cs-btn-primary">Consultar por mamparas</a>
                     </div>
 
-                    <!-- MAMPARA INTERACTIVA -->
-                    <div class="cs-hero-visual">
-                        <div class="cs-mp-scene">
+                   <!-- MAMPARA INTERACTIVA -->
+<div class="cs-hero-visual">
+  <div class="cs-mp-scene cs-mp-toggle">
 
-                            <div class="cs-mp-frame">
+    <!-- TOGGLE (nuevo) -->
+    <input type="checkbox" id="mp-hero" class="cs-mp-check">
 
-                                <!-- vidrio esmerilado fijo -->
-                                <div class="cs-mp-backglass"></div>
+    <!-- LABEL = zona clickeable -->
+    <label for="mp-hero" class="cs-mp-hit">
 
-                                <!-- logo detras -->
-                                <div class="cs-mp-logo"></div>
+      <div class="cs-mp-frame">
 
-                                <!-- panel corredizo -->
-                                <div class="cs-mp-panel">
-                                    <div class="cs-mp-panel-glass"></div>
-                                    <span class="cs-mp-handle"></span>
-                                </div>
+        <!-- vidrio esmerilado fijo -->
+        <div class="cs-mp-backglass"></div>
 
-                            </div>
+        <!-- logo detrás -->
+        <div class="cs-mp-logo"></div>
 
-                            <p class="cs-mp-caption">Pasar el mouse para correr la mampara.</p>
-                        </div>
-                    </div>
+        <!-- panel corredizo -->
+        <div class="cs-mp-panel">
+          <div class="cs-mp-panel-glass"></div>
+          <span class="cs-mp-handle"></span>
+        </div>
+
+      </div>
+    </label>
+
+    <p class="cs-mp-caption">
+      Tocá la mampara para abrir y cerrar.
+    </p>
+
+  </div>
+</div>
+
 
                 </div>
             </section>

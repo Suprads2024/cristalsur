@@ -505,12 +505,6 @@
   transition: opacity 0.6s ease;
 }
 
-/* HOVER → puerta abierta */
-.cs-door-scene:hover .cs-door-leaf {
-  transform: rotateY(-75deg) translateX(6px);
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,.18),
-              0 26px 60px rgba(0,0,0,.6);
-}
 
 .cs-door-scene:hover .cs-door-inner-glow {
   opacity: 1;
@@ -628,4 +622,51 @@
         display: none !important;
     }
     
+}
+/* =========================
+   PUERTA – TOGGLE MOBILE
+   ========================= */
+.cs-door-check {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs-door-hit {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Desktop: hover original */
+@media (hover: hover) and (pointer: fine) {
+  .cs-door-scene:hover .cs-door-leaf {
+    transform: perspective(900px) rotateY(-100deg);
+  }
+
+  .cs-door-scene:hover .cs-door-logo {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Mobile: toggle por tap */
+@media (hover: none) and (pointer: coarse) {
+
+  /* anulamos hover */
+  .cs-door-scene:hover .cs-door-leaf {
+    transform: none;
+  }
+
+
+  /* abierto */
+  .cs-door-check:checked + .cs-door-hit .cs-door-leaf {
+    transform: perspective(900px) rotateY(-100deg);
+  }
+
+  .cs-door-check:checked + .cs-door-hit .cs-door-logo {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
